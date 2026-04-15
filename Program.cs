@@ -57,16 +57,6 @@ class Program
         return result;
     }
 
-
-
-
-
-
-
-
-
-
-
     // public int Solution(int[] A, int X)
     // {
     //     HashSet<int> seen = new HashSet<int>();

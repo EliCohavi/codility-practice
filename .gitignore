@@ -1,0 +1,29 @@
+# Build results
+bin/
+obj/
+
+# User-specific files
+*.user
+*.rsuser
+*.suo
+
+# VS Code
+.vscode/
+
+# Logs
+*.log
+
+# OS generated
+.DS_Store
+Thumbs.db
+
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Rider / JetBrains (if you ever use it)
+.idea/
+
+# Test results
+TestResults/
