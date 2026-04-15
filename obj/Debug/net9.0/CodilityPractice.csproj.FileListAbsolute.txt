@@ -1,0 +1,14 @@
+/Users/elicohavi/CodilityPractice/bin/Debug/net9.0/CodilityPractice
+/Users/elicohavi/CodilityPractice/bin/Debug/net9.0/CodilityPractice.deps.json
+/Users/elicohavi/CodilityPractice/bin/Debug/net9.0/CodilityPractice.runtimeconfig.json
+/Users/elicohavi/CodilityPractice/bin/Debug/net9.0/CodilityPractice.dll
+/Users/elicohavi/CodilityPractice/bin/Debug/net9.0/CodilityPractice.pdb
+/Users/elicohavi/CodilityPractice/obj/Debug/net9.0/CodilityPractice.GeneratedMSBuildEditorConfig.editorconfig
+/Users/elicohavi/CodilityPractice/obj/Debug/net9.0/CodilityPractice.AssemblyInfoInputs.cache
+/Users/elicohavi/CodilityPractice/obj/Debug/net9.0/CodilityPractice.AssemblyInfo.cs
+/Users/elicohavi/CodilityPractice/obj/Debug/net9.0/CodilityPractice.csproj.CoreCompileInputs.cache
+/Users/elicohavi/CodilityPractice/obj/Debug/net9.0/CodilityPractice.dll
+/Users/elicohavi/CodilityPractice/obj/Debug/net9.0/refint/CodilityPractice.dll
+/Users/elicohavi/CodilityPractice/obj/Debug/net9.0/CodilityPractice.pdb
+/Users/elicohavi/CodilityPractice/obj/Debug/net9.0/CodilityPractice.genruntimeconfig.cache
+/Users/elicohavi/CodilityPractice/obj/Debug/net9.0/ref/CodilityPractice.dll
