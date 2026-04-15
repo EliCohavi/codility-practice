@@ -23,7 +23,7 @@ class Program
     {
         int N = A.Length;
         int knownSum = 0;
-        int missingSum = 0;
+        int missingSum;
         int targetSum = (N + F) * M;
 
         for (int i = 0; i < N; i++)
