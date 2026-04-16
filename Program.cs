@@ -12,7 +12,7 @@ class Program
 
     static void Main()
     {
-        int A = 999999999;
+        int A = 3560743;
         Program program = new Program();
         int result = program.Solution(A);
         Console.WriteLine(result);
@@ -21,16 +21,13 @@ class Program
     // Generate numbers between A and 1_000_000_000 divisable by 10
     public int Solution(int A)
     {
-        int min = A;
-        int max = 1_000_000_000;
-
-        int start = (min + 9) / 10;
-        int end = max / 10;
+        int start = (A + 9) / 10;
+        int end = 1_000_000_000 / 10;
 
         Random rand = new Random();
-        int number = rand.Next(start, end + 1) * 10;
+        int num = rand.Next(start, end + 1) * 10;
 
-        return number;
+        return num;
     }
 
     // =====================================
