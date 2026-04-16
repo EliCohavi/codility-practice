@@ -9,53 +9,80 @@ using System.Reflection.Metadata;
 
 class Program
 {
+
     static void Main()
     {
-        int[] A = { 3, 2, 4 };
-        int F = 2;
-        int M = 3;
+        int A = 27;
         Program program = new Program();
-        int[] result = program.Solution(A, F, M);
-        Console.WriteLine(string.Join(", ", result));
+        int result = program.Solution(A);
+        Console.WriteLine(result);
     }
 
-    public int[] Solution(int[] A, int F, int M)
+    // Generate numbers between A and 1_000_000_000 divisable by 10
+    public int Solution(int A)
     {
-        int N = A.Length;
-        int knownSum = 0;
-        int missingSum;
-        int targetSum = (N + F) * M;
+        int min = A;
+        int max = 1_000_000_000 - 1;
 
-        for (int i = 0; i < N; i++)
-        {
-            knownSum += A[i];
-        }
+        int start = (min + 9) / 10;
+        int end = max / 10;
 
-        missingSum = targetSum - knownSum;
+        Random rand = new Random();
+        int number = rand.Next(start, end + 1) * 10;
 
-        if (missingSum < F || missingSum > (6 * F))
-        {
-            return new int[] { 0 };
-        }
-
-        int[] result = new int[F];
-
-        for (int i = 0; i < F; i++)
-        {
-            result[i] = 1;
-        }
-
-        missingSum -= F;
-
-        for (int i = 0; i < F; i++)
-        {
-            int add = Math.Min(5, missingSum);
-            result[i] += add;
-            missingSum -= add;
-        }
-
-        return result;
+        return number;
     }
+
+    // =====================================
+    // Dice Problem
+    // static void Main()
+    // {
+    //     int[] A = { 3, 2, 4 };
+    //     int F = 2;
+    //     int M = 3;
+    //     Program program = new Program();
+    //     int[] result = program.Solution(A, F, M);
+    //     Console.WriteLine(string.Join(", ", result));
+    // }
+
+    // public int[] Solution(int[] A, int F, int M)
+    // {
+    //     int N = A.Length;
+    //     int knownSum = 0;
+    //     int missingSum;
+    //     int targetSum = (N + F) * M;
+
+    //     for (int i = 0; i < N; i++)
+    //     {
+    //         knownSum += A[i];
+    //     }
+
+    //     missingSum = targetSum - knownSum;
+
+    //     if (missingSum < F || missingSum > (6 * F))
+    //     {
+    //         return new int[] { 0 };
+    //     }
+
+    //     int[] result = new int[F];
+
+    //     for (int i = 0; i < F; i++)
+    //     {
+    //         result[i] = 1;
+    //     }
+
+    //     missingSum -= F;
+
+    //     for (int i = 0; i < F; i++)
+    //     {
+    //         int add = Math.Min(5, missingSum);
+    //         result[i] += add;
+    //         missingSum -= add;
+    //     }
+
+    //     return result;
+    // }
+    // ====================================
 
     // public int Solution(int[] A, int X)
     // {
