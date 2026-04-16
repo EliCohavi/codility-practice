@@ -12,7 +12,7 @@ class Program
 
     static void Main()
     {
-        int A = 27;
+        int A = 999999999;
         Program program = new Program();
         int result = program.Solution(A);
         Console.WriteLine(result);
@@ -22,7 +22,7 @@ class Program
     public int Solution(int A)
     {
         int min = A;
-        int max = 1_000_000_000 - 1;
+        int max = 1_000_000_000;
 
         int start = (min + 9) / 10;
         int end = max / 10;
