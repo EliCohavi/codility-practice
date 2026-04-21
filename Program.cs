@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data;
 using System.Dynamic;
 using System.Globalization;
 using System.IO.Pipelines;
@@ -12,23 +13,49 @@ class Program
 
     static void Main()
     {
-        int A = 3560743;
+        string input = "banana";
         Program program = new Program();
-        int result = program.Solution(A);
-        Console.WriteLine(result);
+        Dictionary<char, int> result = program.Solution(input);
+        Console.WriteLine(string.Join(",", result));
     }
 
-    // Generate numbers between A and 1_000_000_000 divisable by 10
-    public int Solution(int A)
+    public Dictionary<char, int> Solution(string input)
     {
-        int start = (A + 9) / 10;
-        int end = 1_000_000_000 / 10;
+        var characterCounts = new Dictionary<char, int>();
 
-        Random rand = new Random();
-        int num = rand.Next(start, end + 1) * 10;
+        foreach (char c in input)
+        {
+            if (!characterCounts.ContainsKey(c))
+            {
+                characterCounts.Add(c, 1);
+            }
+            else
+            {
+                int count = characterCounts[c];
+                count++;
+                characterCounts[c] = count;
+            }
+        }
 
-        return num;
+        return characterCounts;
     }
+
+
+
+
+
+
+    // // Generate numbers between A and 1_000_000_000 divisable by 10
+    // public int Solution(int A)
+    // {
+    //     int start = (A + 9) / 10;
+    //     int end = 1_000_000_000 / 10;
+
+    //     Random rand = new Random();
+    //     int num = rand.Next(start, end + 1) * 10;
+
+    //     return num;
+    // }
 
     // =====================================
     // Dice Problem
