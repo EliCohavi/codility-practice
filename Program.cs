@@ -16,44 +16,35 @@ class Program
     static void Main()
     {
         Program program = new Program();
-        List<(int start, int end)> values = new List<(int start, int end)> { (1, 3), (2, 4), (6, 8) };
+        List<(int start, int end)> values = new List<(int start, int end)> { (1, 3), (2, 4), (6, 8), (3, 5) };
         program.Solution(values);
     }
 
     public void Solution(List<(int start, int end)> values)
     {
-        List<Range> ranges = values.Select(t => new Range
+        values = values.OrderBy(v => v.start).ToList(); // sort
+
+        List<(int start, int end)> ranges = new List<(int start, int end)>();
+
+        (int start, int end) current = values[0];
+
+        for (int i = 1; i < values.Count; i++)
         {
-            Start = t.start,
-            End = t.end
-        }).ToList();
-
-        // if range2 start >= range1 start && range2 start <= range end
-        List<Range> overlappingRanges = new List<Range>();
-
-        Range current = ranges[0];
-
-        for (int i = 1; i < ranges.Count; i++)
-        {
-            if (ranges[i].Start <= current.End)
+            if (values[i].start <= current.end)
             {
-                current.End = Math.Max(current.End, ranges[i].End);
+                current.end = Math.Max(current.end, values[i].end);
             }
             else
             {
-                overlappingRanges.Add(current);
-                current = ranges[i];
+                ranges.Add(current);
+                current = values[i];
             }
         }
 
-        overlappingRanges.Add(current);
+        ranges.Add(current);
 
-    }
+        Console.WriteLine(string.Join(",", ranges));
 
-    public class Range
-    {
-        public int Start;
-        public int End;
     }
 
 
