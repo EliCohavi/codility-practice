@@ -115,3 +115,22 @@ Dictionary<int, List<string>>
 grouping logic
 
 Excellent for decomposition.
+
+
+7. Merge Overlapping Time Ranges
+
+Difficulty: Medium+
+
+Input:
+[(1,3), (2,4), (6,8)]
+
+Output:
+[(1,4), (6,8)]
+
+Practice:
+
+sorting
+interval logic
+iterative comparison
+
+Harder than likely interview.

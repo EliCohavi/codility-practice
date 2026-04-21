@@ -16,36 +16,81 @@ class Program
     static void Main()
     {
         Program program = new Program();
-        string[] input = new string[] { "cat", "tree", "dog", "house", "exit", "sport" };
-        program.Solution(input);
+        List<(int start, int end)> values = new List<(int start, int end)> { (1, 3), (2, 4), (6, 8) };
+        program.Solution(values);
     }
 
-    public void Solution(string[] input)
+    public void Solution(List<(int start, int end)> values)
     {
-        Dictionary<int, List<string>> keyValuePairs = new Dictionary<int, List<string>>();
-        for (int i = 0; i < input.Length; i++)
+        List<Range> ranges = values.Select(t => new Range
         {
-            int wordLength = input[i].Length;
+            Start = t.start,
+            End = t.end
+        }).ToList();
 
-            if (!keyValuePairs.ContainsKey(wordLength))
+        // if range2 start >= range1 start && range2 start <= range end
+        List<Range> overlappingRanges = new List<Range>();
+
+        Range current = ranges[0];
+
+        for (int i = 1; i < ranges.Count; i++)
+        {
+            if (ranges[i].Start <= current.End)
             {
-                List<string> strings = [input[i]];
-                keyValuePairs.Add(wordLength, strings);
+                current.End = Math.Max(current.End, ranges[i].End);
             }
             else
             {
-                List<string> strings = keyValuePairs[wordLength];
-                strings.Add(input[i]);
-                //Console.WriteLine(string.Join(',', strings));
-                keyValuePairs[wordLength] = strings;
+                overlappingRanges.Add(current);
+                current = ranges[i];
             }
         }
 
-        foreach (var (key, value) in keyValuePairs)
-        {
-            Console.WriteLine($"{key}: {string.Join(", ", value)}");
-        }
+        overlappingRanges.Add(current);
+
     }
+
+    public class Range
+    {
+        public int Start;
+        public int End;
+    }
+
+
+    // Problem 6
+    // static void Main()
+    // {
+    //     Program program = new Program();
+    //     string[] input = new string[] { "cat", "tree", "dog", "house", "exit", "sport" };
+    //     program.Solution(input);
+    // }
+
+    // public void Solution(string[] input)
+    // {
+    //     Dictionary<int, List<string>> keyValuePairs = new Dictionary<int, List<string>>();
+    //     for (int i = 0; i < input.Length; i++)
+    //     {
+    //         int wordLength = input[i].Length;
+
+    //         if (!keyValuePairs.ContainsKey(wordLength))
+    //         {
+    //             List<string> strings = [input[i]];
+    //             keyValuePairs.Add(wordLength, strings);
+    //         }
+    //         else
+    //         {
+    //             List<string> strings = keyValuePairs[wordLength];
+    //             strings.Add(input[i]);
+    //             //Console.WriteLine(string.Join(',', strings));
+    //             keyValuePairs[wordLength] = strings;
+    //         }
+    //     }
+
+    //     foreach (var (key, value) in keyValuePairs)
+    //     {
+    //         Console.WriteLine($"{key}: {string.Join(", ", value)}");
+    //     }
+    // }
 
 
 
