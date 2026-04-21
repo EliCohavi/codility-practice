@@ -94,3 +94,24 @@ Practice:
 
 HashSet
 duplicate tracking
+
+
+6. Group Words by Length
+
+Difficulty: Medium
+
+Input:
+["cat", "tree", "dog", "house"]
+
+Output:
+
+3: ["cat","dog"]
+4: ["tree"]
+5: ["house"]
+
+Practice:
+
+Dictionary<int, List<string>>
+grouping logic
+
+Excellent for decomposition.

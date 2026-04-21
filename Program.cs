@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Dynamic;
@@ -15,39 +16,76 @@ class Program
     static void Main()
     {
         Program program = new Program();
-        int[] input = new int[] { 1, 2, 3, 2, 4, 1 };
-        HashSet<int> result = program.Solution(input);
-        Console.WriteLine(string.Join(',', result));
+        string[] input = new string[] { "cat", "tree", "dog", "house", "exit", "sport" };
+        program.Solution(input);
     }
 
-    public HashSet<int> Solution(int[] input)
+    public void Solution(string[] input)
     {
-        Dictionary<int, int> keyValuePairs = new Dictionary<int, int>();
-        HashSet<int> duplicates = new HashSet<int>();
-
+        Dictionary<int, List<string>> keyValuePairs = new Dictionary<int, List<string>>();
         for (int i = 0; i < input.Length; i++)
         {
-            if (!keyValuePairs.ContainsKey(input[i]))
+            int wordLength = input[i].Length;
+
+            if (!keyValuePairs.ContainsKey(wordLength))
             {
-                keyValuePairs.Add(input[i], 1);
+                List<string> strings = [input[i]];
+                keyValuePairs.Add(wordLength, strings);
             }
             else
             {
-                keyValuePairs[input[i]]++;
+                List<string> strings = keyValuePairs[wordLength];
+                strings.Add(input[i]);
+                //Console.WriteLine(string.Join(',', strings));
+                keyValuePairs[wordLength] = strings;
             }
         }
 
-        // Optional for sorted by order of appearance of duplication
-        for (int i = 0; i < input.Length; i++)
+        foreach (var (key, value) in keyValuePairs)
         {
-            if (keyValuePairs[input[i]] > 1)
-            {
-                duplicates.Add(input[i]);
-            }
+            Console.WriteLine($"{key}: {string.Join(", ", value)}");
         }
-
-        return duplicates;
     }
+
+
+
+    // Problem 5
+    // static void Main()
+    // {
+    //     Program program = new Program();
+    //     int[] input = new int[] { 1, 2, 3, 2, 4, 1 };
+    //     HashSet<int> result = program.Solution(input);
+    //     Console.WriteLine(string.Join(',', result));
+    // }
+
+    // public HashSet<int> Solution(int[] input)
+    // {
+    //     Dictionary<int, int> keyValuePairs = new Dictionary<int, int>();
+    //     HashSet<int> duplicates = new HashSet<int>();
+
+    //     for (int i = 0; i < input.Length; i++)
+    //     {
+    //         if (!keyValuePairs.ContainsKey(input[i]))
+    //         {
+    //             keyValuePairs.Add(input[i], 1);
+    //         }
+    //         else
+    //         {
+    //             keyValuePairs[input[i]]++;
+    //         }
+    //     }
+
+    //     // Optional for sorted by order of appearance of duplication
+    //     for (int i = 0; i < input.Length; i++)
+    //     {
+    //         if (keyValuePairs[input[i]] > 1)
+    //         {
+    //             duplicates.Add(input[i]);
+    //         }
+    //     }
+
+    //     return duplicates;
+    // }
 
 
 
