@@ -77,3 +77,20 @@ control flow
 edge cases
 
 This is harder than likely interview but very good practice.
+
+
+5. Find Duplicate Numbers
+
+Difficulty: Medium
+
+Given an array, return all duplicates.
+
+Example:
+[1,2,3,2,4,1]
+Return:
+[1,2]
+
+Practice:
+
+HashSet
+duplicate tracking

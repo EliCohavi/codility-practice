@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data;
@@ -14,47 +15,88 @@ class Program
     static void Main()
     {
         Program program = new Program();
-        string input = "((()))";
-        bool result = program.Solution(input);
-        Console.WriteLine(result);
+        int[] input = new int[] { 1, 2, 3, 2, 4, 1 };
+        HashSet<int> result = program.Solution(input);
+        Console.WriteLine(string.Join(',', result));
     }
 
-    public bool Solution(string input)
+    public HashSet<int> Solution(int[] input)
     {
-        bool balanced = false;
-        Dictionary<char, int> parentheses = new Dictionary<char, int>();
-        int count;
-        int leftSide;
-        int rightSide;
-        //int totalCount = input.Length;
+        Dictionary<int, int> keyValuePairs = new Dictionary<int, int>();
+        HashSet<int> duplicates = new HashSet<int>();
 
-        foreach (char c in input)
+        for (int i = 0; i < input.Length; i++)
         {
-            if (!parentheses.ContainsKey(c))
+            if (!keyValuePairs.ContainsKey(input[i]))
             {
-                parentheses.Add(c, 1);
+                keyValuePairs.Add(input[i], 1);
             }
             else
             {
-                count = parentheses[c] + 1;
-                parentheses[c] = count;
+                keyValuePairs[input[i]]++;
             }
         }
 
-        leftSide = parentheses['('];
-        rightSide = parentheses[')'];
-
-        if (leftSide == rightSide)
+        // Optional for sorted by order of appearance of duplication
+        for (int i = 0; i < input.Length; i++)
         {
-            balanced = true;
-        }
-        else
-        {
-            balanced = false;
+            if (keyValuePairs[input[i]] > 1)
+            {
+                duplicates.Add(input[i]);
+            }
         }
 
-        return balanced;
+        return duplicates;
     }
+
+
+
+
+    // Problem 4
+    // static void Main()
+    // {
+    //     Program program = new Program();
+    //     string input = "((()))";
+    //     bool result = program.Solution(input);
+    //     Console.WriteLine(result);
+    // }
+
+    // public bool Solution(string input)
+    // {
+    //     bool balanced = false;
+    //     Dictionary<char, int> parentheses = new Dictionary<char, int>();
+    //     int count;
+    //     int leftSide;
+    //     int rightSide;
+    //     //int totalCount = input.Length;
+
+    //     foreach (char c in input)
+    //     {
+    //         if (!parentheses.ContainsKey(c))
+    //         {
+    //             parentheses.Add(c, 1);
+    //         }
+    //         else
+    //         {
+    //             count = parentheses[c] + 1;
+    //             parentheses[c] = count;
+    //         }
+    //     }
+
+    //     leftSide = parentheses['('];
+    //     rightSide = parentheses[')'];
+
+    //     if (leftSide == rightSide)
+    //     {
+    //         balanced = true;
+    //     }
+    //     else
+    //     {
+    //         balanced = false;
+    //     }
+
+    //     return balanced;
+    // }
 
 
 
