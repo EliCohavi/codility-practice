@@ -10,37 +10,76 @@ using System.Reflection.Metadata;
 
 class Program
 {
-
     static void Main()
     {
-        string input = "banana";
-        Program program = new Program();
-        Dictionary<char, int> result = program.Solution(input);
-        Console.WriteLine(string.Join(",", result));
+        string input = "swiss";
+        char result = Program.Solution(input);
+        Console.WriteLine(result);
     }
 
-    public Dictionary<char, int> Solution(string input)
+    static char Solution(string input)
     {
-        var characterCounts = new Dictionary<char, int>();
+        Dictionary<char, int> characters = new Dictionary<char, int>();
+        int count = 0;
+        char result = input[0];
 
         foreach (char c in input)
         {
-            if (!characterCounts.ContainsKey(c))
+            if (!characters.ContainsKey(c))
             {
-                characterCounts.Add(c, 1);
+                count = 1;
+                characters.Add(c, count);
             }
             else
             {
-                int count = characterCounts[c];
-                count++;
-                characterCounts[c] = count;
+                count = characters[c] + 1;
+                characters[c] = count;
             }
         }
 
-        return characterCounts;
+        foreach (char c in input)
+        {
+            if (characters[c] == 1)
+            {
+                result = c;
+                break;
+            }
+        }
+
+        return result;
     }
 
 
+
+    // Problem 1
+    // static void Main()
+    // {
+    //     string input = "banana";
+    //     Program program = new Program();
+    //     Dictionary<char, int> result = program.Solution(input);
+    //     Console.WriteLine(string.Join(",", result));
+    // }
+
+    // public Dictionary<char, int> Solution(string input)
+    // {
+    //     var characterCounts = new Dictionary<char, int>();
+
+    //     foreach (char c in input)
+    //     {
+    //         if (!characterCounts.ContainsKey(c))
+    //         {
+    //             characterCounts.Add(c, 1);
+    //         }
+    //         else
+    //         {
+    //             int count = characterCounts[c];
+    //             count++;
+    //             characterCounts[c] = count;
+    //         }
+    //     }
+
+    //     return characterCounts;
+    // }
 
 
 

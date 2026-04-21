@@ -19,3 +19,19 @@ iteration
 edge cases
 
 This is extremely common.
+
+
+2. First Non-Repeating Character
+
+Difficulty: Easy+
+
+Return the first character in a string that appears only once.
+
+Example:
+input: "swiss"
+output: 'w'
+
+Practice:
+
+frequency maps
+second-pass lookup
