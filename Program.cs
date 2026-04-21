@@ -13,18 +13,66 @@ class Program
 {
     static void Main()
     {
-        string input = "the quick brown fox jumps over the lazy dog";
-        string result = Program.Solution(input);
+        Program program = new Program();
+        string input = "((()))";
+        bool result = program.Solution(input);
         Console.WriteLine(result);
     }
 
-    static string Solution(string input)
+    public bool Solution(string input)
     {
-        string[] words = input.Split(' ');
-        Array.Reverse(words);
-        string reverse = string.Join(' ', words);
-        return reverse;
+        bool balanced = false;
+        Dictionary<char, int> parentheses = new Dictionary<char, int>();
+        int count;
+        int leftSide;
+        int rightSide;
+        //int totalCount = input.Length;
+
+        foreach (char c in input)
+        {
+            if (!parentheses.ContainsKey(c))
+            {
+                parentheses.Add(c, 1);
+            }
+            else
+            {
+                count = parentheses[c] + 1;
+                parentheses[c] = count;
+            }
+        }
+
+        leftSide = parentheses['('];
+        rightSide = parentheses[')'];
+
+        if (leftSide == rightSide)
+        {
+            balanced = true;
+        }
+        else
+        {
+            balanced = false;
+        }
+
+        return balanced;
     }
+
+
+
+    // Problem 3
+    // static void Main()
+    // {
+    //     string input = "the quick brown fox jumps over the lazy dog";
+    //     string result = Program.Solution(input);
+    //     Console.WriteLine(result);
+    // }
+
+    // static string Solution(string input)
+    // {
+    //     string[] words = input.Split(' ');
+    //     Array.Reverse(words);
+    //     string reverse = string.Join(' ', words);
+    //     return reverse;
+    // }
 
 
 

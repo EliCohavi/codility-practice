@@ -52,3 +52,28 @@ Practice:
 split/join
 arrays
 indexing
+
+
+4. Validate Balanced Parentheses
+
+Difficulty: Medium
+
+Input:
+"(())()"
+
+Return:
+true
+
+Input:
+"(()"
+
+Return:
+false
+
+Practice:
+
+stack
+control flow
+edge cases
+
+This is harder than likely interview but very good practice.
