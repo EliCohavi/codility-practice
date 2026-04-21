@@ -35,3 +35,20 @@ Practice:
 
 frequency maps
 second-pass lookup
+
+
+3. Reverse Words in a Sentence
+
+Difficulty: Easy+
+
+Input:
+"hello world there"
+
+Output:
+"there world hello"
+
+Practice:
+
+split/join
+arrays
+indexing

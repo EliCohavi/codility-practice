@@ -7,47 +7,66 @@ using System.Globalization;
 using System.IO.Pipelines;
 using System.Numerics;
 using System.Reflection.Metadata;
+using Microsoft.VisualBasic;
 
 class Program
 {
     static void Main()
     {
-        string input = "swiss";
-        char result = Program.Solution(input);
+        string input = "the quick brown fox jumps over the lazy dog";
+        string result = Program.Solution(input);
         Console.WriteLine(result);
     }
 
-    static char Solution(string input)
+    static string Solution(string input)
     {
-        Dictionary<char, int> characters = new Dictionary<char, int>();
-        int count = 0;
-        char result = input[0];
-
-        foreach (char c in input)
-        {
-            if (!characters.ContainsKey(c))
-            {
-                count = 1;
-                characters.Add(c, count);
-            }
-            else
-            {
-                count = characters[c] + 1;
-                characters[c] = count;
-            }
-        }
-
-        foreach (char c in input)
-        {
-            if (characters[c] == 1)
-            {
-                result = c;
-                break;
-            }
-        }
-
-        return result;
+        string[] words = input.Split(' ');
+        Array.Reverse(words);
+        string reverse = string.Join(' ', words);
+        return reverse;
     }
+
+
+
+    // Problem 2
+    // static void Main()
+    // {
+    //     string input = "swiss";
+    //     char result = Program.Solution(input);
+    //     Console.WriteLine(result);
+    // }
+
+    // static char Solution(string input)
+    // {
+    //     Dictionary<char, int> characters = new Dictionary<char, int>();
+    //     int count = 0;
+    //     char result = input[0];
+
+    //     foreach (char c in input)
+    //     {
+    //         if (!characters.ContainsKey(c))
+    //         {
+    //             count = 1;
+    //             characters.Add(c, count);
+    //         }
+    //         else
+    //         {
+    //             count = characters[c] + 1;
+    //             characters[c] = count;
+    //         }
+    //     }
+
+    //     foreach (char c in input)
+    //     {
+    //         if (characters[c] == 1)
+    //         {
+    //             result = c;
+    //             break;
+    //         }
+    //     }
+
+    //     return result;
+    // }
 
 
 
