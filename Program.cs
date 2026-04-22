@@ -15,35 +15,79 @@ class Program
 {
     static void Main()
     {
+        // Apples are $2 each
+        // Bananas are $1 each
+        // Apply Discount: Buy 3 apples get 1 free
+
         Program program = new Program();
-        List<(int start, int end)> values = new List<(int start, int end)> { (1, 3), (2, 4), (6, 8), (3, 5) };
-        program.Solution(values);
+        Dictionary<string, int> shoppingCart = new Dictionary<string, int> { { "apple", 12 }, { "banana", 2 } };
+        int result = program.ApplyDiscounts(shoppingCart);
+        Console.WriteLine(result);
     }
 
-    public void Solution(List<(int start, int end)> values)
+    public int ApplyDiscounts(Dictionary<string, int> shoppingCart)
     {
-        values = values.OrderBy(v => v.start).ToList(); // sort
+        int totalCost = 0;
+        int appleCost = 2;
+        int bananaCost = 1;
+        int discountCount = 0;
 
-        List<(int start, int end)> ranges = new List<(int start, int end)>();
-
-        (int start, int end) current = values[0];
-
-        for (int i = 1; i < values.Count; i++)
+        foreach (var key in shoppingCart.Keys)
         {
-            if (values[i].start <= current.end)
+            if (key == "apple")
             {
-                current.end = Math.Max(current.end, values[i].end);
+
+                if (shoppingCart[key] % 3 < 3)
+                {
+                    int quantity = shoppingCart[key] - (shoppingCart[key] % 3);
+                    totalCost += (appleCost * quantity);
+                }
             }
             else
             {
-                ranges.Add(current);
-                current = values[i];
+                int quantity = shoppingCart[key];
+                totalCost += (bananaCost * quantity);
             }
         }
 
-        ranges.Add(current);
-        Console.WriteLine(string.Join(",", ranges));
+        return totalCost;
     }
+
+
+
+
+
+    // static void Main()
+    // {
+    //     Program program = new Program();
+    //     List<(int start, int end)> values = new List<(int start, int end)> { (1, 3), (2, 4), (6, 8), (3, 5) };
+    //     program.Solution(values);
+    // }
+
+    // public void Solution(List<(int start, int end)> values)
+    // {
+    //     values = values.OrderBy(v => v.start).ToList(); // sort
+
+    //     List<(int start, int end)> ranges = new List<(int start, int end)>();
+
+    //     (int start, int end) current = values[0];
+
+    //     for (int i = 1; i < values.Count; i++)
+    //     {
+    //         if (values[i].start <= current.end)
+    //         {
+    //             current.end = Math.Max(current.end, values[i].end);
+    //         }
+    //         else
+    //         {
+    //             ranges.Add(current);
+    //             current = values[i];
+    //         }
+    //     }
+
+    //     ranges.Add(current);
+    //     Console.WriteLine(string.Join(",", ranges));
+    // }
 
 
     // Problem 6

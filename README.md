@@ -134,3 +134,23 @@ interval logic
 iterative comparison
 
 Harder than likely interview.
+
+
+8. Shopping Cart Total with Discounts
+
+Difficulty: Medium+
+
+Given cart items:
+
+apples: $2 each
+buy 3 apples, get 1 free
+
+Return total cost.
+
+Practice:
+
+business rules
+decomposition
+clarity
+
+This is VERY interview-relevant because it tests practical coding.
