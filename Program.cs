@@ -42,9 +42,7 @@ class Program
         }
 
         ranges.Add(current);
-
         Console.WriteLine(string.Join(",", ranges));
-
     }
 
 
