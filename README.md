@@ -173,3 +173,25 @@ Practice:
 dictionary
 sorting
 transformation
+
+
+10. Basic Rate Limiter
+
+Difficulty: Hard-ish
+
+Allow max 3 requests per user.
+
+Input:
+user requests:
+A, A, B, A, A
+
+Output:
+allow / deny
+
+Practice:
+
+dictionaries
+state tracking
+logic design
+
+This is harder than they’ll likely ask but excellent for reasoning.

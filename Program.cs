@@ -13,37 +13,97 @@ using Microsoft.VisualBasic;
 
 class Program
 {
+
+    //Problem 10
     static void Main()
     {
         Program program = new Program();
-        string input = "cat dog cat bird dog cat";
-        var result = program.Solution(input);
-        Console.WriteLine("[\"" + string.Join("\", \"", result) + "\"]");
+        string[] input = new string[] { "A", "A", "B", "A", "A" };
+        Console.WriteLine(string.Join(", ", program.Solution(input)));
     }
 
-    public List<string> Solution(string input)
+    public List<string> Solution(string[] input)
     {
-        Dictionary<string, int> dict = new Dictionary<string, int>();
+        Dictionary<string, int> requests = new Dictionary<string, int>();
+        List<string> authorizations = new List<string>();
 
-        foreach (string word in input.Split(' '))
+        foreach (string s in input)
         {
-            if (dict.ContainsKey(word))
-                dict[word]++;
+            if (requests.ContainsKey(s) && requests[s] >= 3)
+            {
+                authorizations.Add("deny");
+                requests[s]++;
+            }
+            else if (requests.ContainsKey(s))
+            {
+                authorizations.Add("allow");
+                requests[s]++;
+            }
             else
-                dict[word] = 1;
+            {
+                requests[s] = 1;
+                authorizations.Add("allow");
+            }
         }
-
-        return dict
-        .OrderByDescending(x => x.Value)
-        .ThenBy(x => x.Key)
-        .Select(x => x.Key)
-        .ToList();
+        return authorizations;
     }
 
 
+    // Problem 9
+    // static void Main()
+    // {
+    //     Program program = new Program();
+    //     string input = "cat dog cat bird dog cat";
+    //     var result = program.Solution(input);
+    //     Console.WriteLine("[\"" + string.Join("\", \"", result) + "\"]");
+    // }
+
+    // public List<string> Solution(string input)
+    // {
+    //     Dictionary<string, int> dict = new Dictionary<string, int>();
+
+    //     foreach (string word in input.Split(' '))
+    //     {
+    //         if (dict.ContainsKey(word))
+    //             dict[word]++;
+    //         else
+    //             dict[word] = 1;
+    //     }
+
+    //     return dict
+    //     .OrderByDescending(x => x.Value)
+    //     .ThenBy(x => x.Key)
+    //     .Select(x => x.Key)
+    //     .ToList();
+    // }
 
 
+    // Problem 8
+    // static void Main()
+    // {
+    //     Program program = new Program();
+    //     Dictionary<string, int> shoppingCart = new Dictionary<string, int> { { "apple", 12 }, { "banana", 2 } };
+    //     Console.WriteLine(program.ApplyDiscount(shoppingCart));
+    // }
 
+    // public int ApplyDiscount(Dictionary<string, int> shoppingCart)
+    // {
+    //     int applePrice = 2;
+    //     int bananaPrice = 1;
+
+    //     int appleQuantity = shoppingCart.ContainsKey("apple") ? shoppingCart["apple"] : 0;
+    //     int bananaQuantity = shoppingCart.ContainsKey("banana") ? shoppingCart["banana"] : 0;
+
+    //     int freeApples = appleQuantity / 4;
+    //     int paidApples = appleQuantity - freeApples;
+
+    //     int appleCost = paidApples * applePrice;
+    //     int bananaCost = bananaQuantity * bananaPrice;
+
+    //     return appleCost + bananaCost;
+    // }
+
+    // Problem 7
     // static void Main()
     // {
     //     Program program = new Program();
