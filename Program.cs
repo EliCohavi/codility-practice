@@ -27,44 +27,19 @@ class Program
 
     public int ApplyDiscounts(Dictionary<string, int> shoppingCart)
     {
-        int totalCost = 0;
-        int discountedCost = 0;
-        int appleCost = 2;
-        int bananaCost = 1;
-        int appleQuantity = 0;
-        int bananaQuantity = 0;
-        int discountedQuantity = 0;
+        int applePrice = 2;
+        int bananaPrice = 1;
 
-        foreach (var key in shoppingCart.Keys)
-        {
-            if (key == "apple")
-            {
-                appleQuantity = shoppingCart[key];
-                totalCost += appleCost * appleQuantity;
-            }
-            else if (key == "banana")
-            {
-                bananaQuantity = shoppingCart[key];
-                totalCost += bananaCost * bananaQuantity;
-            }
-        }
+        int appleQty = shoppingCart.ContainsKey("apple") ? shoppingCart["apple"] : 0;
+        int bananaQty = shoppingCart.ContainsKey("banana") ? shoppingCart["banana"] : 0;
 
-        if (appleQuantity >= 3)
-        {
-            for (int i = 1; i <= appleQuantity; i++)
-            {
-                if (i % 3 == 0)
-                {
-                    appleQuantity--;
-                    discountedQuantity++;
-                }
-            }
+        int freeApples = appleQty / 4;
+        int paidApples = appleQty - freeApples;
 
-            discountedCost = totalCost - (discountedQuantity * appleCost);
-            return discountedCost;
-        }
+        int appleTotal = paidApples * applePrice;
+        int bananaTotal = bananaQty * bananaPrice;
 
-        return totalCost;
+        return appleTotal + bananaTotal;
     }
 
 
