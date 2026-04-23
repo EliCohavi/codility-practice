@@ -28,26 +28,40 @@ class Program
     public int ApplyDiscounts(Dictionary<string, int> shoppingCart)
     {
         int totalCost = 0;
+        int discountedCost = 0;
         int appleCost = 2;
         int bananaCost = 1;
-        int discountCount = 0;
+        int appleQuantity = 0;
+        int bananaQuantity = 0;
+        int discountedQuantity = 0;
 
         foreach (var key in shoppingCart.Keys)
         {
             if (key == "apple")
             {
+                appleQuantity = shoppingCart[key];
+                totalCost += appleCost * appleQuantity;
+            }
+            else if (key == "banana")
+            {
+                bananaQuantity = shoppingCart[key];
+                totalCost += bananaCost * bananaQuantity;
+            }
+        }
 
-                if (shoppingCart[key] % 3 < 3)
+        if (appleQuantity >= 3)
+        {
+            for (int i = 1; i <= appleQuantity; i++)
+            {
+                if (i % 3 == 0)
                 {
-                    int quantity = shoppingCart[key] - (shoppingCart[key] % 3);
-                    totalCost += (appleCost * quantity);
+                    appleQuantity--;
+                    discountedQuantity++;
                 }
             }
-            else
-            {
-                int quantity = shoppingCart[key];
-                totalCost += (bananaCost * quantity);
-            }
+
+            discountedCost = totalCost - (discountedQuantity * appleCost);
+            return discountedCost;
         }
 
         return totalCost;
