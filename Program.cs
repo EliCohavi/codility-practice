@@ -14,39 +14,76 @@ using Microsoft.VisualBasic;
 class Program
 {
 
-    //Problem 10
+    // Problem 4 - Correct Implementation
     static void Main()
     {
         Program program = new Program();
-        string[] input = new string[] { "A", "A", "B", "A", "A" };
-        Console.WriteLine(string.Join(", ", program.Solution(input)));
+        string input = "((()()))";
+        bool result = program.Solution(input);
+        Console.WriteLine(result);
     }
 
-    public List<string> Solution(string[] input)
+    public bool Solution(string input)
     {
-        Dictionary<string, int> requests = new Dictionary<string, int>();
-        List<string> authorizations = new List<string>();
+        Stack<char> parentheses = new Stack<char>();
+        char[] chars = input.ToCharArray();
 
-        foreach (string s in input)
+        if (chars.Length % 2 != 0)
+            return false;
+
+        foreach (char c in chars)
         {
-            if (requests.ContainsKey(s) && requests[s] >= 3)
+            if (c == '(')
             {
-                authorizations.Add("deny");
-                requests[s]++;
+                parentheses.Push('(');
             }
-            else if (requests.ContainsKey(s))
+            if (c == ')')
             {
-                authorizations.Add("allow");
-                requests[s]++;
-            }
-            else
-            {
-                requests[s] = 1;
-                authorizations.Add("allow");
+                if (parentheses.Count == 0)
+                    return false;
+
+                parentheses.Pop();
             }
         }
-        return authorizations;
+
+        return parentheses.Count == 0;
     }
+
+
+
+    //Problem 10
+    // static void Main()
+    // {
+    //     Program program = new Program();
+    //     string[] input = new string[] { "A", "A", "B", "A", "A" };
+    //     Console.WriteLine(string.Join(", ", program.Solution(input)));
+    // }
+
+    // public List<string> Solution(string[] input)
+    // {
+    //     Dictionary<string, int> requests = new Dictionary<string, int>();
+    //     List<string> authorizations = new List<string>();
+
+    //     foreach (string s in input)
+    //     {
+    //         if (requests.ContainsKey(s) && requests[s] >= 3)
+    //         {
+    //             authorizations.Add("deny");
+    //             requests[s]++;
+    //         }
+    //         else if (requests.ContainsKey(s))
+    //         {
+    //             authorizations.Add("allow");
+    //             requests[s]++;
+    //         }
+    //         else
+    //         {
+    //             requests[s] = 1;
+    //             authorizations.Add("allow");
+    //         }
+    //     }
+    //     return authorizations;
+    // }
 
 
     // Problem 9
