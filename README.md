@@ -154,3 +154,22 @@ decomposition
 clarity
 
 This is VERY interview-relevant because it tests practical coding.
+
+
+9. Word Frequency Ranking
+
+Difficulty: Medium+
+
+Input:
+"cat dog cat bird dog cat"
+
+Output:
+["cat", "dog", "bird"]
+
+Ordered by frequency.
+
+Practice:
+
+dictionary
+sorting
+transformation

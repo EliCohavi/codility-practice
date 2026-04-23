@@ -15,31 +15,29 @@ class Program
 {
     static void Main()
     {
-        // Apples are $2 each
-        // Bananas are $1 each
-        // Apply Discount: Buy 3 apples get 1 free
-
         Program program = new Program();
-        Dictionary<string, int> shoppingCart = new Dictionary<string, int> { { "apple", 12 }, { "banana", 2 } };
-        int result = program.ApplyDiscounts(shoppingCart);
-        Console.WriteLine(result);
+        string input = "cat dog cat bird dog cat";
+        var result = program.Solution(input);
+        Console.WriteLine("[\"" + string.Join("\", \"", result) + "\"]");
     }
 
-    public int ApplyDiscounts(Dictionary<string, int> shoppingCart)
+    public List<string> Solution(string input)
     {
-        int applePrice = 2;
-        int bananaPrice = 1;
+        Dictionary<string, int> dict = new Dictionary<string, int>();
 
-        int appleQty = shoppingCart.ContainsKey("apple") ? shoppingCart["apple"] : 0;
-        int bananaQty = shoppingCart.ContainsKey("banana") ? shoppingCart["banana"] : 0;
+        foreach (string word in input.Split(' '))
+        {
+            if (dict.ContainsKey(word))
+                dict[word]++;
+            else
+                dict[word] = 1;
+        }
 
-        int freeApples = appleQty / 4;
-        int paidApples = appleQty - freeApples;
-
-        int appleTotal = paidApples * applePrice;
-        int bananaTotal = bananaQty * bananaPrice;
-
-        return appleTotal + bananaTotal;
+        return dict
+        .OrderByDescending(x => x.Value)
+        .ThenBy(x => x.Key)
+        .Select(x => x.Key)
+        .ToList();
     }
 
 
