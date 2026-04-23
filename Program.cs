@@ -13,7 +13,7 @@ using Microsoft.VisualBasic;
 
 class Program
 {
-<<<<<<< HEAD
+
     // reverse string practice again
     static void Main()
     {
@@ -30,46 +30,44 @@ class Program
     }
 
 
-=======
+
 
     // Problem 4 - Correct Implementation
-    static void Main()
-    {
-        Program program = new Program();
-        string input = "((()()))";
-        bool result = program.Solution(input);
-        Console.WriteLine(result);
-    }
+    // static void Main()
+    // {
+    //     Program program = new Program();
+    //     string input = "((()()))";
+    //     bool result = program.Solution(input);
+    //     Console.WriteLine(result);
+    // }
 
-    public bool Solution(string input)
-    {
-        Stack<char> parentheses = new Stack<char>();
-        char[] chars = input.ToCharArray();
+    // public bool Solution(string input)
+    // {
+    //     Stack<char> parentheses = new Stack<char>();
+    //     char[] chars = input.ToCharArray();
 
-        if (chars.Length % 2 != 0)
-            return false;
+    //     if (chars.Length % 2 != 0)
+    //         return false;
 
-        foreach (char c in chars)
-        {
-            if (c == '(')
-            {
-                parentheses.Push('(');
-            }
-            if (c == ')')
-            {
-                if (parentheses.Count == 0)
-                    return false;
+    //     foreach (char c in chars)
+    //     {
+    //         if (c == '(')
+    //         {
+    //             parentheses.Push('(');
+    //         }
+    //         if (c == ')')
+    //         {
+    //             if (parentheses.Count == 0)
+    //                 return false;
 
-                parentheses.Pop();
-            }
-        }
+    //             parentheses.Pop();
+    //         }
+    //     }
 
-        return parentheses.Count == 0;
-    }
+    //     return parentheses.Count == 0;
+    // }
 
 
-
->>>>>>> 5f400d654ca169a79dd9e3778886df3b75fe0869
     //Problem 10
     // static void Main()
     // {
