@@ -7,6 +7,7 @@ using System.Data;
 using System.Dynamic;
 using System.Globalization;
 using System.IO.Pipelines;
+using System.Net;
 using System.Numerics;
 using System.Reflection.Metadata;
 using Microsoft.VisualBasic;
@@ -14,32 +15,87 @@ using Microsoft.VisualBasic;
 class Program
 {
 
-    // Problem 11
+    // Problem 12
     static void Main()
     {
         Program program = new Program();
-        int reservation1 = 3;
-        int reservation2 = 4;
-        Console.WriteLine("Reservation 1: " + (program.Reserve(reservation1) == true ? "Success" : "Fail"));
-        Console.WriteLine("Reservation 2: " + (program.Reserve(reservation2) == true ? "Success" : "Fail"));
+        program.AddTask("Laundry");
+        program.AddTask("Dishes");
+        program.AddTask("Grocery Shopping");
+        program.CompleteTodo("Dishes");
+        Console.WriteLine(program.GetPending());
     }
 
-    public int stockA = 5;
-
-    public bool Reserve(int reservation)
+    public void AddTask(string name)
     {
-
-        if (stockA >= reservation)
+        tasks.Add(new Task
         {
-            stockA -= reservation;
-        }
-        else
-        {
-            return false;
-        }
-
-        return true;
+            Name = name,
+        });
     }
+
+    public void CompleteTodo(string name)
+    {
+        foreach (Task t in tasks)
+        {
+            if (t.Name == name)
+            {
+                t.Completed = true;
+                break;
+            }
+        }
+    }
+
+    public string GetPending()
+    {
+        var sb = new System.Text.StringBuilder();
+        foreach (Task t in tasks)
+        {
+            if (!t.Completed)
+            {
+                sb.Append(Environment.NewLine + t.Name + ": Pending");
+            }
+        }
+
+        return sb.ToString();
+    }
+
+    List<Task> tasks = new List<Task>();
+
+    public class Task
+    {
+        public required string Name { get; set; }
+        public bool Completed { get; set; } = false;
+    }
+
+
+
+    // // Problem 11
+    // static void Main()
+    // {
+    //     Program program = new Program();
+    //     int reservation1 = 3;
+    //     int reservation2 = 4;
+    //     Console.WriteLine("Reservation 1: " + (program.Reserve(reservation1) == true ? "Success" : "Fail"));
+    //     Console.WriteLine("Reservation 2: " + (program.Reserve(reservation2) == true ? "Success" : "Fail"));
+    // }
+
+    // public int stockA = 5;
+
+    // public bool Reserve(int reservation)
+    // {
+
+    //     if (stockA >= reservation)
+    //     {
+    //         stockA -= reservation;
+    //     }
+    //     else
+    //     {
+    //         return false;
+    //     }
+
+    //     return true;
+    // }
 
 
     // reverse string practice again

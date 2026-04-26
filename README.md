@@ -206,3 +206,18 @@ Practice:
 - business logic
 
 Very realistic backend logic.
+
+
+12. Build a Simple Todo System
+
+Operations:
+
+AddTodo
+CompleteTodo
+GetPending
+
+Pattern:
+
+object modeling
+list state
+CRUD-style logic
