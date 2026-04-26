@@ -18,7 +18,6 @@ class Program
     static void Main()
     {
         Program program = new Program();
-        //List<int> reservations = new List<int> { 3, 4 };
         int reservation1 = 3;
         int reservation2 = 4;
         Console.WriteLine("Reservation 1: " + (program.Reserve(reservation1) == true ? "Success" : "Fail"));
