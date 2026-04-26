@@ -14,20 +14,49 @@ using Microsoft.VisualBasic;
 class Program
 {
 
-    // reverse string practice again
+    // Problem 11
     static void Main()
     {
         Program program = new Program();
-        string input = "hello there world";
-        Console.WriteLine(program.Solution(input));
+        //List<int> reservations = new List<int> { 3, 4 };
+        int reservation1 = 3;
+        int reservation2 = 4;
+        Console.WriteLine("Reservation 1: " + (program.Reserve(reservation1) == true ? "Success" : "Fail"));
+        Console.WriteLine("Reservation 2: " + (program.Reserve(reservation2) == true ? "Success" : "Fail"));
     }
 
-    public string Solution(string input)
+    public int stockA = 5;
+
+    public bool Reserve(int reservation)
     {
-        string[] words = input.Split(" ");
-        Array.Reverse(words);
-        return string.Join(" ", words);
+
+        if (stockA >= reservation)
+        {
+            stockA -= reservation;
+        }
+        else
+        {
+            return false;
+        }
+
+        return true;
     }
+
+
+    // reverse string practice again
+    // static void Main()
+    // {
+    //     Program program = new Program();
+    //     string input = "hello there world";
+    //     Console.WriteLine(program.Solution(input));
+    // }
+
+    // public string Solution(string input)
+    // {
+    //     string[] words = input.Split(" ");
+    //     Array.Reverse(words);
+    //     return string.Join(" ", words);
+    // }
 
 
 

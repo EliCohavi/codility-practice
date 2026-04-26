@@ -20,7 +20,6 @@ edge cases
 
 This is extremely common.
 
-
 2. First Non-Repeating Character
 
 Difficulty: Easy+
@@ -35,7 +34,6 @@ Practice:
 
 frequency maps
 second-pass lookup
-
 
 3. Reverse Words in a Sentence
 
@@ -52,7 +50,6 @@ Practice:
 split/join
 arrays
 indexing
-
 
 4. Validate Balanced Parentheses
 
@@ -78,7 +75,6 @@ edge cases
 
 This is harder than likely interview but very good practice.
 
-
 5. Find Duplicate Numbers
 
 Difficulty: Medium
@@ -94,7 +90,6 @@ Practice:
 
 HashSet
 duplicate tracking
-
 
 6. Group Words by Length
 
@@ -116,7 +111,6 @@ grouping logic
 
 Excellent for decomposition.
 
-
 7. Merge Overlapping Time Ranges
 
 Difficulty: Medium+
@@ -134,7 +128,6 @@ interval logic
 iterative comparison
 
 Harder than likely interview.
-
 
 8. Shopping Cart Total with Discounts
 
@@ -155,7 +148,6 @@ clarity
 
 This is VERY interview-relevant because it tests practical coding.
 
-
 9. Word Frequency Ranking
 
 Difficulty: Medium+
@@ -173,7 +165,6 @@ Practice:
 dictionary
 sorting
 transformation
-
 
 10. Basic Rate Limiter
 
@@ -195,3 +186,23 @@ state tracking
 logic design
 
 This is harder than they’ll likely ask but excellent for reasoning.
+
+11. Inventory Reservation
+
+Difficulty: Hard-ish
+
+Given stock:
+itemA = 5
+
+Reserve quantities:
+
+- reserve 3 → success
+- reserve 4 → fail
+
+Practice:
+
+- object state
+- validation
+- business logic
+
+Very realistic backend logic.
