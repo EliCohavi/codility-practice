@@ -14,58 +14,83 @@ using Microsoft.VisualBasic;
 
 class Program
 {
+    // int Palindrome
     static void Main()
     {
         Program program = new Program();
-        int[] nums = new int[] { 2, 3, 5, 3, 10 };
-        int target = 6;
-        int[] result = program.Solution(nums, target);
-        Console.WriteLine("[" + string.Join(", ", result) + "]");
+        int input = 123241;
+        bool result = program.isPalindrome(input);
+        Console.WriteLine(result);
     }
 
-
-    public int[] Solution(int[] nums, int target)
+    public bool isPalindrome(int x)
     {
-        Dictionary<int, int> map = new Dictionary<int, int>();
-        for (int i = 0; i < nums.Length; i++)
-        {
-            int complement = target - nums[i];
+        string s = x.ToString();
+        char[] charArray = s.ToCharArray();
+        Array.Reverse(charArray);
+        string reversed = new string(charArray);
 
-            if (map.ContainsKey(complement))
-            {
-                return new int[] { map[complement], i };
-            }
+        if (s.Equals(reversed))
+            return true;
 
-            map[nums[i]] = i;
-        }
-
-        return new int[] { };
+        return false;
     }
-
-    // public int[] Solution(int[] nums, int target)
-    // {
-    //     Dictionary<int, int> numsAndIndices = new Dictionary<int, int>();
-    //     for (int i = 0; i < nums.Length; i++)
-    //     {
-    //         int complement = target - nums[i]; // 2 then 7
-
-    //         if (numsAndIndices.ContainsValue(complement))
-    //         {
-    //             foreach (var entry in numsAndIndices)
-    //             {
-    //                 if (entry.Value.Equals(complement))
-    //                     return [entry.Key, i];
-    //             }
-    //         }
-
-    //         numsAndIndices.Add(i, nums[i]);
-    //     }
-
-    //     return [0, 1];
-    // }
-
 
 }
+
+// TwoSum
+// static void Main()
+// {
+//     Program program = new Program();
+//     int[] nums = new int[] { 2, 3, 5, 3, 10 };
+//     int target = 6;
+//     int[] result = program.Solution(nums, target);
+//     Console.WriteLine("[" + string.Join(", ", result) + "]");
+// }
+
+
+// public int[] Solution(int[] nums, int target)
+// {
+//     Dictionary<int, int> map = new Dictionary<int, int>();
+//     for (int i = 0; i < nums.Length; i++)
+//     {
+//         int complement = target - nums[i];
+
+//         if (map.ContainsKey(complement))
+//         {
+//             return new int[] { map[complement], i };
+//         }
+
+//         map[nums[i]] = i;
+//     }
+
+//     return new int[] { };
+// }
+
+// public int[] Solution(int[] nums, int target)
+// {
+//     Dictionary<int, int> numsAndIndices = new Dictionary<int, int>();
+//     for (int i = 0; i < nums.Length; i++)
+//     {
+//         int complement = target - nums[i]; // 2 then 7
+
+//         if (numsAndIndices.ContainsValue(complement))
+//         {
+//             foreach (var entry in numsAndIndices)
+//             {
+//                 if (entry.Value.Equals(complement))
+//                     return [entry.Key, i];
+//             }
+//         }
+
+//         numsAndIndices.Add(i, nums[i]);
+//     }
+
+//     return [0, 1];
+// }
+
+
+//}
 // // Problem 12
 // static void Main()
 // {
