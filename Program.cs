@@ -14,29 +14,80 @@ using Microsoft.VisualBasic;
 
 class Program
 {
-    // int Palindrome
+    // Roman Numeral to Int
     static void Main()
     {
         Program program = new Program();
-        int input = 123241;
-        bool result = program.isPalindrome(input);
-        Console.WriteLine(result);
+        // string numeral = "MCMXCIV";
+        // string numeral = "III";
+        string numeral = "LVIII";
+        int result = program.RomanToInt(numeral);
+        Console.WriteLine(numeral + ": " + result);
     }
 
-    public bool isPalindrome(int x)
+    public int RomanToInt(string numeral)
     {
-        string s = x.ToString();
-        char[] charArray = s.ToCharArray();
-        Array.Reverse(charArray);
-        string reversed = new string(charArray);
+        Dictionary<char, int> numeralMap = new Dictionary<char, int> {
+            {'I', 1},
+            {'V', 5},
+            {'X', 10},
+            {'L', 50},
+            {'C', 100},
+            {'D', 500},
+            {'M', 1000}
+            };
 
-        if (s.Equals(reversed))
-            return true;
+        char[] chars = numeral.ToCharArray();
+        int total = 0;
 
-        return false;
+        for (int i = 0; i < chars.Length; i++)
+        {
+            if (i + 1 < chars.Length)
+            {
+                if (numeralMap[chars[i]] < numeralMap[chars[i + 1]])
+                {
+                    total += numeralMap[chars[i + 1]] - numeralMap[chars[i]];
+                    i++;
+                }
+                else
+                {
+                    total += numeralMap[chars[i]];
+                }
+            }
+            else
+            {
+                total += numeralMap[chars[i]];
+            }
+
+        }
+
+        return total;
     }
-
 }
+
+//     // int Palindrome
+//     static void Main()
+//     {
+//         Program program = new Program();
+//         int input = 123241;
+//         bool result = program.isPalindrome(input);
+//         Console.WriteLine(result);
+//     }
+
+//     public bool isPalindrome(int x)
+//     {
+//         string s = x.ToString();
+//         char[] charArray = s.ToCharArray();
+//         Array.Reverse(charArray);
+//         string reversed = new string(charArray);
+
+//         if (s.Equals(reversed))
+//             return true;
+
+//         return false;
+//     }
+
+// }
 
 // TwoSum
 // static void Main()
